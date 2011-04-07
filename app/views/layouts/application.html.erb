@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Makz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<%= csrf_meta_tag %>
+</head>
+<body>
+<body>
+<header id="top">
+<hgroup>
+  <h1>马克功学</h1>
+  <h2>Marksonz Studio</h2>
+</hgroup>
+</header>
+
+<% if notice %>
+<p><%= notice %></p>
+<p><% elsif alert %></p>
+<%= alert %>
+<% end %>
+
+<section id="content">
+
+<%= yield %>
+
+</section>
+<footer id="bottom">
+  <span>© 2011 Some rights reserved, Marksonz Studio</span>
+</footer>
+</body>
+</html>

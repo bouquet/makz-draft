@@ -1,0 +1,14 @@
+<article id="video">
+
+<p>
+  <b>Title:</b>
+  <%= @video.title %>
+</p>
+
+<p>
+  <embed src="http://player.youku.com/player.php/sid/<%= @video.video_token %>/v.swf" quality="high" width="826" height="688" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
+</p>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
+</article>

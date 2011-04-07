@@ -1,0 +1,20 @@
+<% form_tag videos_path, :method => :delete do %>
+<table>
+<tr>
+  <th>Title</th>
+  <th>Video</th>
+  <th>Edit</th>
+  <th>Delete</th>
+</tr>
+<% @videos.each do |video| %>
+<tr>
+  <td><%= video.title %></td>
+  <td><%= video.video_token %></td>
+  <td><%= link_to 'Edit', edit_video_path(video) %></td>
+  <td><%= check_box_tag "video_keys[]", video.key %></td>
+</tr>
+<% end %>
+</table>
+<%= submit_tag "Delete selected Videos" %>
+<%= link_to 'New Video', new_video_path %>
+<% end %>
