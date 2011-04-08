@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   layout :manage
   before_filter :authenticate, :except => [:index, :show]
+  caches_action :index, :show
   # GET /videos
   # GET /videos.xml
   def index
@@ -53,6 +54,7 @@ class VideosController < ApplicationController
         format.xml  { render :xml => @video.errors, :status => :unprocessable_entity }
       end
     end
+    expire_action :action => :index
   end
 
   # PUT /videos/1
@@ -69,6 +71,7 @@ class VideosController < ApplicationController
         format.xml  { render :xml => @video.errors, :status => :unprocessable_entity }
       end
     end
+    expire_action :action => :show
   end
 
   # DELETE /videos/1
@@ -81,6 +84,7 @@ class VideosController < ApplicationController
       format.html { redirect_to(manage_url) }
       format.xml  { head :ok }
     end
+    expire_action :action => :show
   end
 
   def destroy_multi
@@ -97,9 +101,16 @@ class VideosController < ApplicationController
       format.html { redirect_to(manage_url) }
       format.xml { head :ok }
     end
+    expire_action :action => :index
   end
 
 private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "yozloy" && password == "0054444944"
+    end
+  end
 
   def manage
     case action_name
