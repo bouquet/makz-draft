@@ -1,7 +1,7 @@
 Makz::Application.routes.draw do
   delete "/videos" => "videos#destroy_multi"
 
-  get "manage" => "manage#home"
+  get "/manage" => "manage#home"
 
   match "/signout" => "sessions#destroy", :as => :signout
   match "/auth/:provider/callback" => "sessions#create"

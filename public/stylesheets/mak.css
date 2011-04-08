@@ -7,6 +7,7 @@ body {
   padding-top:24px;
   background:#888888;
   box-shadow:inset 0px 3px 5px -2px #555555, inset 0px -3px 5px -2px #555555;
+  -webkit-box-shadow:inset 0px 3px 5px -2px #555555, inset 0px -3px 5px -2px #555555;
 }
 
 #top, #bottom {
@@ -17,7 +18,7 @@ body {
 #top {
   margin:12px auto 16px;
   text-indent:-9999px;
-  background:url(/images/marksonz.png) top left no-repeat;
+  background:url(/images/marksonz.png) 0 0 no-repeat;
 }
 
 #bottom {
@@ -43,7 +44,6 @@ body {
   width:826px;
   margin:0 auto;
   padding-bottom:1px;
-  box-shadow:0 none 32px #000000;
 }
 
 #video {
@@ -54,6 +54,7 @@ body {
   text-align:center;
   background:#000000;
   box-shadow:8px 0px 5px -2px #555555, -8px 0px 5px -2px #555555;
+  -webkit-box-shadow:8px 0px 5px -2px #555555, -8px 0px 5px -2px #555555;
 }
 
 #video h1 {
