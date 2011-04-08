@@ -101,12 +101,6 @@ class VideosController < ApplicationController
 
 private
 
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "yozloy" && password == "0054444944"
-    end
-  end
-
   def manage
     case action_name
     when "new", "edit"

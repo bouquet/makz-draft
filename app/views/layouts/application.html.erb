@@ -9,18 +9,21 @@
 <%= csrf_meta_tag %>
 </head>
 <body>
-<body>
+
+<a href="/">
 <header id="top">
 <hgroup>
   <h1>马克功学</h1>
-  <h2>Marksonz Studio</h2>
+  <h2>Marksonz</h2>
 </hgroup>
 </header>
+</a>
 
 <% if notice %>
-<p><%= notice %></p>
-<p><% elsif alert %></p>
-<%= alert %>
+<p class="flash notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+<p class="flash alert"><%= alert %></p>
 <% end %>
 
 <section id="content">
@@ -29,7 +32,7 @@
 
 </section>
 <footer id="bottom">
-  <span>© 2011 Some rights reserved, Marksonz Studio</span>
+  <span>© 2011 Some rights reserved, Marksonz.com</span>
 </footer>
 </body>
 </html>
