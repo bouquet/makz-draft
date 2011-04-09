@@ -3,14 +3,16 @@ class Video
 
   property :title, String
   property :video_token, String
-  property :thumbnail, String
 
   validates_presence_of :title
   validates_presence_of :video_token
-  validates_presence_of :thumbnail
 
   before_create :short_key
   before_save :youkusid
+
+  def thumbnail
+    "thumbnails/#{self.key}.jpg"
+  end
 
 private
 
