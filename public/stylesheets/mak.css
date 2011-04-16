@@ -1,6 +1,7 @@
 body {
   padding:0;
   width:100%;
+  border-top:6px solid #c41101;
 }
 
 #content {
@@ -18,7 +19,7 @@ body {
 #top {
   margin:12px auto 16px;
   text-indent:-9999px;
-  background:url(/images/marksonz.png) 0 0 no-repeat;
+  background:url(/images/marksonz.png) 0 18px no-repeat;
 }
 
 #bottom {
@@ -72,6 +73,20 @@ body {
   height:189px;
   box-shadow:0 0 6px #000000;
   -webkit-box-shadow:0 0 6px #000000;
+}
+
+.ads {
+  width:244px;
+  height:181;
+  box-shadow:0 0 6px #b20400, inset 0 0 6px #888888;
+  -webkit-box-shadow:0 0 6px #b20400, inset 0 0 6px #888888;
+  background:url(/images/makadsbg.png) repeat;
+  border:4px solid #ffffff;
+}
+
+.ads {
+  width:244px;
+  height:181px;
 }
 
 .video h1 {

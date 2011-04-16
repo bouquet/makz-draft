@@ -1,10 +1,15 @@
 <ul id="videos">
-<% @videos.each do |video| %>
+  <a href="http://shop36674955.taobao.com">
+    <li class="ads video">
+      <%= image_tag 'maktaobao.png' %>
+    </li>
+  </a>
+  <% @videos.each do |video| %>
   <a href="<%= url_for video %>">
     <li class="video">
       <%= image_tag video.thumbnail %>
       <h1><%= video.title %></h1>
     </li>
   </a>
-<% end %>
+  <% end %>
 </ul>
