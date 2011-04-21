@@ -4,6 +4,9 @@ gem 'rails'
 gem 'ripple'
 gem 'omniauth'
 gem 'jquery-rails'
+gem 'carmen'
+gem 'formtastic'
+gem 'nokogiri'
 
 group :production do
   gem 'rainbows'

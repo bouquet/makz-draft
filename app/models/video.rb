@@ -7,6 +7,8 @@ class Video
   validates_presence_of :title
   validates_presence_of :video_token
 
+  many :artists
+
   before_create :short_key
   before_save :youkusid
 

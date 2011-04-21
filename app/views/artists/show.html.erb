@@ -1,0 +1,13 @@
+<ul id="videos">
+  <li class="video">
+    <%= image_tag @artist.thumbnail %>
+  </li>
+  <% @artist.videos.each do |video| %>
+  <a href="<%= url_for video %>">
+    <li class="video">
+      <%= image_tag video.thumbnail %>
+      <h1><%= video.title %></h1>
+    </li>
+  </a>
+  <% end %>
+</ul>

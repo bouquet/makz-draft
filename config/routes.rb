@@ -7,8 +7,11 @@ Makz::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   scope "/manage" do
     resources :videos, :only => [:new, :edit]
+    resources :artists, :only => [:new, :edit]
   end
-  root :to => "videos#index"
+  root :to => "artists#index"
+
+  resources :artists, :except => [:new, :edit]
   resources :videos, :except => [:new, :edit]
   # The priority is based upon order of creation:
   # first created -> highest priority.

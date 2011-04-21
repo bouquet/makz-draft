@@ -1,0 +1,15 @@
+<ul id="artists">
+  <a href="http://shop36674955.taobao.com">
+    <li class="ads artist">
+      <%= image_tag 'maktaobao.png' %>
+    </li>
+  </a>
+  <% @artists.each do |artist| %>
+  <a href="<%= url_for artist %>">
+    <li class="artist">
+      <%= image_tag artist.thumbnail %>
+      <h1><%= artist.name %></h1>
+    </li>
+  </a>
+  <% end %>
+</ul>

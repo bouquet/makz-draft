@@ -106,13 +106,4 @@ private
       username == "yozloy" && password == "0054444944"
     end
   end
-
-  def manage
-    case action_name
-    when "new", "edit"
-      "manage"
-    else
-      "application"
-    end
-  end
 end

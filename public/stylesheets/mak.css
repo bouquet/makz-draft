@@ -41,7 +41,7 @@ body {
   background:#e01b1b;
 }
 
-#videos {
+#artists, #videos {
   width:826px;
   margin:0 auto;
   padding-bottom:1px;
@@ -65,7 +65,7 @@ body {
   color:#ffffff;
 }
 
-.video {
+.artist, .video {
   margin:0 10px 24px 10px;
   display:inline-block;
   list-style:none;
@@ -89,14 +89,14 @@ body {
   height:181px;
 }
 
-.video h1 {
+.artist h1, .video h1 {
   float:left;
   overflow:hidden;
   width:0;
   height:0;
 }
 
-.video:hover h1 {
+.artist:hover h1, .video:hover h1 {
   margin-top:80px;
   width:252px;
   height:30px;
@@ -108,13 +108,13 @@ body {
   color:#ffffff;
 }
 
-.video img {
+.artist img, .video img {
   width:252px;
   height:189px;
   position:absolute;
 }
 
-.video span {
+.artist span, .video span {
   position:relative;
   bottom:80px;
 }

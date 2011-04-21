@@ -1,3 +1,4 @@
+<h1>Videos</h1>
 <% form_tag videos_path, :method => :delete do %>
 <table>
 <tr>
@@ -17,4 +18,28 @@
 </table>
 <%= submit_tag "Delete selected Videos" %>
 <%= link_to 'New Video', new_video_path %>
+<% end %>
+<h1>Artists</h1>
+<% form_tag artists_path, :method => :delete do %>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Country</th>
+  <th>Sex</th>
+  <th>Birth</th>
+  <th>Delete</th>
+</tr>
+<% @artists.each do |artist| %>
+<tr>
+  <td><%= artist.name %></td>
+  <td><%= artist.nationality %></td>
+  <td><%= artist.sex %></td>
+  <td><%= artist.birth %></td>
+  <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+  <td><%= check_box_tag "artist_keys[]", artist.key %></td>
+</tr>
+<% end %>
+</table>
+<%= submit_tag "Delete selected Artists" %>
+<%= link_to 'New Artist', new_artist_path %>
 <% end %>
