@@ -1,6 +1,6 @@
 Makz::Application.routes.draw do
   delete "/videos" => "videos#destroy_multi"
-
+  delete "/artists" => "artists#destroy_multi"
   get "/manage" => "manage#home"
 
   match "/signout" => "sessions#destroy", :as => :signout

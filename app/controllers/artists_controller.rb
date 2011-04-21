@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   layout :manage
   before_filter :authenticate, :except => [:index, :show]
   before_filter :join_birth, :only => [:create, :update]
-  before_filter :videos_ids, :only => [:new, :edit]
+  before_filter :video_ids, :only => [:new, :edit]
 
   def index
     @artists = Artist.all
@@ -49,12 +49,35 @@ class ArtistsController < ApplicationController
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
         Artist.find(session[:original_artist_name]).destroy if @artist.name != session[:original_artist_name]
+        @artist.videos.each {|v| v.artists << @artist; v.save}
         format.html { redirect_to(@artist, :notice => 'Artist updated.') }
         format.xml { render :xml => @artist, :status => :created, :location => @artist }
       else
         format.html {render :action => "new", :layout => "manage"}
         format.xml { render :xml => @artist.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @artist = Artist.find(params[:id])
+    @artist.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(manage_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+  def destroy_multi
+    @artists = Artist.find(params[:artist_keys])
+    @artists.each do |a|
+      a.destroy
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(manage_url) }
+      format.xml { head :ok }
     end
   end
 
@@ -67,14 +90,12 @@ private
       params[:artist]['birth(3i)'].to_i
     )
     ['birth(1i)', 'birth(2i)', 'birth(3i)'].each {|i| params[:artist].delete(i)}
-    params[:artist][:videos].delete("")
-#    params[:artist][:videos] = [Video.find(params[:artist][:videos])] if params[:artist][:videos].count == 1
+    params[:artist][:videos].delete_if {|v| v == nil || v == ""}
     params[:artist][:videos] = Video.find(params[:artist][:videos])
-#    params[:artist][:videos] = [] unless params[:artist][:videos]
   end
 
-  def videos_ids
-    @videos_ids = Video.all.map {|v| v.key}
+  def video_ids
+    @video_ids = Video.all.map {|v| v.key}
   end
 
   def artist_video_association

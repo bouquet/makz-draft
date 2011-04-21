@@ -1,6 +1,8 @@
 class VideosController < ApplicationController
   layout :manage
   before_filter :authenticate, :except => [:index, :show]
+  before_filter :artist_ids, :only => [:new, :edit]
+  before_filter :sanitize, :only => [:create, :update]
   # GET /videos
   # GET /videos.xml
   def index
@@ -37,6 +39,7 @@ class VideosController < ApplicationController
   # GET /videos/1/edit
   def edit
     @video = Video.find(params[:id])
+    session[:original_artist_name] = @artist.name
   end
 
   # POST /videos
@@ -62,6 +65,8 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
+        Video.find(session[:original_video_name]).destroy if @artist.name != session[:original_video_name]
+        @video.artists.each {|a| a.videos << @video; a.save}
         format.html { redirect_to(@video, :notice => 'Video was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -85,12 +90,8 @@ class VideosController < ApplicationController
 
   def destroy_multi
     @videos = Video.find(params[:video_keys])
-    if @videos.kind_of? Array
-      @videos.each do |v|
-        v.destroy
-      end
-    else
-      @videos.destroy
+    @videos.each do |v|
+      v.destroy
     end
 
     respond_to do |format|
@@ -105,5 +106,14 @@ private
     authenticate_or_request_with_http_basic do |username, password|
       username == "yozloy" && password == "0054444944"
     end
+  end
+
+  def artist_ids
+    @artist_ids = Artist.all.map {|a| a.key}
+  end
+
+  def sanitize
+    params[:video][:artists].delete_if {|a| a == nil || a == ""}
+    params[:video][:artists] = Artist.find(params[:video][:artists])
   end
 end

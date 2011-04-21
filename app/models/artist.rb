@@ -3,21 +3,17 @@ class Artist
 
   property :name, String
   property :slug, String
-  property :nationality, String
-  property :gender, Boolean
+  property :country, String
+  property :sex, String
   property :birth, Date
   key_on :slug
 
   many :videos
 
   validates_presence_of :name
-  validates_presence_of :gender
+  validates_presence_of :sex
 
   before_save :save_slug
-
-  def sex
-    self.gender ? "Female" : "Male"
-  end
 
   def video_ids
     self.videos.map {|v| v.key}
