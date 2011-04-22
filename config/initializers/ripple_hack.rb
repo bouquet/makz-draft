@@ -9,14 +9,10 @@ module Ripple
           raise Ripple::DocumentNotFound, "Could not find #{@klass.name} without a key" if args.empty? || args.all?(&:blank?)
           args.map {|key| find_one(key) }
         end
-      end
-    end
-  end
-  module Persistence
-    module InstanceMethods
-      def save(*args)
-        super
-        self.class.bucket.keys(:reload => true)
+        def all
+          bucket.keys(:reload => true)
+          super
+        end
       end
     end
   end
