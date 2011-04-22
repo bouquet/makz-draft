@@ -12,4 +12,12 @@ module Ripple
       end
     end
   end
+  module Persistence
+    module InstanceMethods
+      def save(*args)
+        super
+        self.class.bucket.keys(:reload => true)
+      end
+    end
+  end
 end
