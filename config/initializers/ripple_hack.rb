@@ -9,9 +9,10 @@ module Ripple
           raise Ripple::DocumentNotFound, "Could not find #{@klass.name} without a key" if args.empty? || args.all?(&:blank?)
           args.map {|key| find_one(key) }
         end
+        alias_method :orig_all, :all
         def all
           bucket.keys(:reload => true)
-          super
+          orig_all
         end
       end
     end
