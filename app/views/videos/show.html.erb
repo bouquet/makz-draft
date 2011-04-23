@@ -5,7 +5,7 @@
 
 <!--<embed src="http://player.youku.com/player.php/sid/<%= @video.video_token %>/v.swf" quality="high" width="826" height="688" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>-->
 <a
-  href="<%= parsed_video_url(@video.video_token) %>"
+  href="<%= ykmp4(@video.video_token) %>"
   style="display:block;width:826px;height:688px"
   id="player">
 </a>
