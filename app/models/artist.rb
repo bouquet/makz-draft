@@ -20,12 +20,12 @@ class Artist
   end
 
   def thumbnail
-    "#{self.slug}.jpg"
+    "portraits/#{self.slug}.jpg"
   end
 
 private
 
   def save_slug
-    self.slug = self.name.tr(' ' , '_')
+    self.slug = self.name.tr(' ' , '_').downcase
   end
 end
