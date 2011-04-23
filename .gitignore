@@ -6,3 +6,4 @@ tmp/
 *.swp
 public/images/thumbnails/*
 public/images/portraits/*
+Gemfile.lock
