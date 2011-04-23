@@ -75,6 +75,10 @@ body {
   -webkit-box-shadow:0 0 6px #000000;
 }
 
+.artist, .video {
+  *display:inline;
+}
+
 .ads {
   width:244px;
   height:181;
