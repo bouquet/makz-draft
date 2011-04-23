@@ -1,7 +1,21 @@
 <article id="video">
 
 <h1><%= @video.title %></h1>
+<script type="text/javascript" src="/javascripts/flowplayer-3.2.6.min.js"></script>
 
-<embed src="http://player.youku.com/player.php/sid/<%= @video.video_token %>/v.swf" quality="high" width="826" height="688" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>
+<!--<embed src="http://player.youku.com/player.php/sid/<%= @video.video_token %>/v.swf" quality="high" width="826" height="688" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>-->
+<a
+  href="<%= ykmp4(@video.video_token) %>"
+  style="display:block;width:826px;height:688px"
+  id="player">
+</a>
+
+<script>
+  flowplayer("player", "/swf/flowplayer-3.2.7.swf", {
+    clip: {
+      scaling: 'fit',
+    },
+  });
+</script>
 
 </article>
