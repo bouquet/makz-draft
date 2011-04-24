@@ -11,7 +11,7 @@
 
 <script>
   $(document).ready(function() {
-    $.ajaxf.install('http://static.marksonz.com/swf/ajax.swf');
+    $.ajaxf.install('/static/swf/ajax.swf');
     $.ajaxf.ready(function() {
       var b = $("#player").attr('data-sid');
       $.ajaxf.getJSON('http://v.youku.com/player/getPlayList/VideoIDS/' + b, '', function(r) {
@@ -21,7 +21,7 @@
         var _fid = r.data[0].streamfileids.mp4;
 
         $("#player").attr('href', ykmp4(_fid, _seed, _key1, _key2));
-        flowplayer("player", "http://static.marksonz.com/swf/flowplayer-3.2.7.swf", {
+        flowplayer("player", "/static/swf/flowplayer-3.2.7.swf", {
           clip: {
             scaling: 'fit',
           },
