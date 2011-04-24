@@ -149,7 +149,6 @@ GEM
     unicorn (3.6.0)
       kgio (~> 2.3)
       rack
-    yajl-ruby (0.8.2)
 
 PLATFORMS
   ruby
@@ -164,4 +163,3 @@ DEPENDENCIES
   rails3-generators
   rainbows
   ripple
-  yajl-ruby

@@ -6,7 +6,6 @@ gem 'omniauth'
 gem 'jquery-rails'
 gem 'carmen'
 gem 'formtastic'
-gem 'yajl-ruby', :require => "yajl"
 
 group :production do
   gem 'rainbows'
