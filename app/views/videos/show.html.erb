@@ -5,17 +5,34 @@
 
 <!--<embed src="http://player.youku.com/player.php/sid/<%= @video.video_token %>/v.swf" quality="high" width="826" height="688" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"></embed>-->
 <a
-  href="<%= ykmp4(@video.video_token) %>"
+  href="#"
   style="display:block;width:826px;height:688px"
-  id="player">
+  id="player"
+  data-sid="<%= @video.video_token %>">
 </a>
 
 <script>
-  flowplayer("player", "/swf/flowplayer-3.2.7.swf", {
-    clip: {
-      scaling: 'fit',
-    },
+  $(document).ready(function() {
+    $.ajaxf.install('/swf/ajax.swf');
+    $.ajaxf.ready(function() {
+      var b = $("#player").attr('data-sid');
+      $.ajaxf.getJSON('http://v.youku.com/player/getPlayList/VideoIDS/' + b, '', function(r) {
+        var _seed = r.data[0].seed;
+        var _key1 = r.data[0].key1;
+        var _key2 = r.data[0].key2;
+        var _fid = r.data[0].streamfileids.mp4;
+
+        $("#player").attr('href', ykmp4(_fid, _seed, _key1, _key2));
+        flowplayer("player", "/swf/flowplayer-3.2.7.swf", {
+          clip: {
+            scaling: 'fit',
+          },
+        });
+      });
+    });
   });
+</script>
+<script>
 </script>
 
 </article>
