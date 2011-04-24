@@ -6,7 +6,7 @@ module VideosHelper
   end
 
   def yvmeta(yvid)
-    uri = URI.parse("http://v.youku.com/player/getPlayList/VideoIDS/#{yvid}")
+    uri = URI.parse("http://v.youku.com/player/getPlayList/VideoIDS/#{yvid}/timezone/+08/version/5/source/video")
     rsp = Net::HTTP.get_response(uri)
     Yajl::Parser.parse(rsp.body, :symbolize_keys => true)[:data][0]
   end
