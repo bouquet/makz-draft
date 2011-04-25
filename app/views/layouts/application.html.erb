@@ -4,10 +4,12 @@
 <meta charset="utf-8" />
 <title>Makz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 <%= stylesheet_link_tag :all %>
-<%= javascript_include_tag "head.min", "youkuparser", "flowplayer-3.2.6.min" %>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" %>
 <%= csrf_meta_tag %>
-<%= yield :head %>
 </head>
 <body>
 

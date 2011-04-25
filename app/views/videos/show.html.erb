@@ -1,7 +1,3 @@
-<% content_for :head do %>
-<%= javascript_include_tag "crossxhr", "json2" %>
-<% end %>
-
 <article id="video">
 
 <h1><%= @video.title %></h1>
@@ -14,30 +10,33 @@
 
 </article>
 <% content_for :bottom do %>
+<%= javascript_include_tag "crossxhr", "youkuparser", "flowplayer-3.2.6.min" %>
 <script>
-  var uri = "http://v.youku.com/player/getPlayList/VideoIDS/<%= @video.video_token %>"
-  var request;
+  $(function() {
+    var uri = "http://v.youku.com/player/getPlayList/VideoIDS/<%= @video.video_token %>"
+    var request;
 
-  function callback() {
-    var res = JSON.parse(request.responseText).data[0];
-    var _seed, _key1, _key2, _fid;
-    _seed = res.seed;
-    _key1 = res.key1;
-    _key2 = res.key2;
-    _fid  = res.streamfileids.mp4;
-    document.getElementById('player').setAttribute("href", ykmp4(_fid, _seed, _key1, _key2));
-    flowplayer("player", "<%= asset_url %>/swf/flowplayer-3.2.7.swf", {
-      clip: {
-        scaling: 'fit'
-      }
-    });
-  }
-  function req() {
-    request = new CrossXHR();
-    request.onreadystatechange = callback;
-    request.open('GET', uri);
-    request.send();
-  }
-  req();
+    function callback() {
+      var res = $.parseJSON(request.responseText).data[0];
+      var _seed, _key1, _key2, _fid;
+      _seed = res.seed;
+      _key1 = res.key1;
+      _key2 = res.key2;
+      _fid  = res.streamfileids.mp4;
+      $('#player').attr("href", ykmp4(_fid, _seed, _key1, _key2));
+      flowplayer("player", "<%= asset_url %>/swf/flowplayer-3.2.7.swf", {
+        clip: {
+          scaling: 'fit'
+        }
+      });
+    }
+    function req() {
+      request = new CrossXHR();
+      request.onreadystatechange = callback;
+      request.open('GET', uri);
+      request.send();
+    }
+    req();
+  });
 </script>
 <% end %>
