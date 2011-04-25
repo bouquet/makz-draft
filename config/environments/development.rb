@@ -19,6 +19,7 @@ Makz::Application.configure do
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
+  config.action_controller.asset_host = "http://0.0.0.0:3000"
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
