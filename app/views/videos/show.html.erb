@@ -21,12 +21,12 @@
         var _fid = r.data[0].streamfileids.mp4;
 
         $("#player").attr('href', ykmp4(_fid, _seed, _key1, _key2));
+        flowplayer("player", "/static/swf/flowplayer-3.2.7.swf", {
+          clip: {
+            scaling: 'fit',
+          },
+        });
       });
-    });
-    flowplayer("player", "/static/swf/flowplayer-3.2.7.swf", {
-      clip: {
-        scaling: 'fit',
-      },
     });
   });
 </script>
