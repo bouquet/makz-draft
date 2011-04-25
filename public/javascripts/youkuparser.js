@@ -1,18 +1,20 @@
 function fileidmix(seed) {
   var mixed = "";
-  var source = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890";
+  var source = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/\\:._-1234567890".split('');
   var len = source.length;
   for (i = 0; i < len; i++) {
     seed = (seed * 211 + 30031) % 65536;
     var index = Math.floor(seed / 65536 * source.length);
     mixed = mixed + source[index];
-    source = source.substring(0, index) + '' + source.substring(index+1);
+    if (source.length >= 1) {
+      source.splice(index, 1);
+    }
   };
   return mixed
 };
 
 function getfileid(fileid, seed) {
-  var mixed = fileidmix(seed);
+  var mixed = fileidmix(seed).split('');
   var ids = fileid.split('*');
   var realid = "";
   var len = ids.length;
