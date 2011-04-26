@@ -1,6 +1,7 @@
 <ul id="artists">
   <li class="ads artist">
     <a href="http://shop36674955.taobao.com">
+      <span class="count">6</span>
       <%= image_tag 'maktaobao.png' %>
     </a>
   </li>
@@ -8,6 +9,7 @@
   <li class="artist">
     <a href="<%= url_for artist %>">
       <%= image_tag artist.thumbnail %>
+      <span class="count"><%= artist.videos.count %></span>
       <h1><%= artist.name %></h1>
     </a>
   </li>
