@@ -110,10 +110,10 @@ body {
   line-height:40px;
   font-size:22px;
   text-align:center;
-  top:48px;
-  position:relative;
+  position:absolute;
+  margin-top:72px;
   background:#000000;
-  opacity:0.6;
+  opacity:0.5;
   color:#ffffff;
 }
 
