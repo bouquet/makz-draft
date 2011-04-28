@@ -18,21 +18,11 @@
 <% content_for :bottom do %>
 <script>
 $(function() {
-  var _boxes = $(".box").hide();
   var _counts = $(".count").hide();
-  _boxes.each(function(i) {
-    $(this).delay(800*i).fadeIn();
-    _i = i+1;
-  });
+  <%= render "shared/seqdisplay.js" %>
   if (_boxes.length == _i) {
-    _counts.delay(_i*800).fadeIn();
+    _counts.delay(_i*400).fadeIn();
   };
-  $(".box h1").hide();
-  $(".box").hover(function() {
-    $(this).find("h1").fadeIn();
-  }).mouseout(function() {
-    $(this).find("h1").fadeOut();
-  });
 });
 </script>
 <% end %>

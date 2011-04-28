@@ -16,15 +16,7 @@
 <% content_for :bottom do %>
 <script>
 $(function() {
-  $(".box").hide().each(function(i) {
-    $(this).delay(800*i).fadeIn();
-  });
-  $(".box h1").hide();
-  $(".box").hover(function() {
-    $(this).find("h1").fadeIn();
-  }).mouseout(function() {
-    $(this).find("h1").fadeOut();
-  });
+  <%= render "shared/seqdisplay.js" %>
 });
 </script>
 <% end %>
