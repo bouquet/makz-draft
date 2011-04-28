@@ -64,6 +64,8 @@ body {
 }
 
 #video h1 {
+  position:absolute;
+  width:814px;
   font-size:32px;
   line-height:36px;
   padding:6px;
@@ -73,7 +75,7 @@ body {
   text-shadow:0 -2px 0 #555555;
 }
 
-.artist, .video {
+.box {
   margin:0 10px 24px 10px;
   display:inline-block;
   list-style:none;
@@ -84,7 +86,7 @@ body {
   font-family:'Arvo', arial, serif;
 }
 
-.artist, .video {
+.box {
   *display:inline;
 }
 
@@ -102,14 +104,7 @@ body {
   height:181px;
 }
 
-.artist h1, .video h1 {
-  float:left;
-  overflow:hidden;
-  width:0;
-  height:0;
-}
-
-.artist:hover h1, .video:hover h1 {
+.box h1 {
   width:252px;
   height:40px;
   line-height:40px;
@@ -122,13 +117,13 @@ body {
   color:#ffffff;
 }
 
-.artist img, .video img {
+.box img {
   width:252px;
   height:189px;
   position:absolute;
 }
 
-.artist span, .video span {
+.box span {
   position:relative;
   bottom:80px;
 }

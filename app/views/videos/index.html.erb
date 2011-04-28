@@ -1,11 +1,11 @@
 <ul id="videos">
-  <li class="ads video">
+  <li class="ads box">
     <a href="http://shop36674955.taobao.com">
       <%= image_tag 'maktaobao.png' %>
     </a>
   </li>
   <% @videos.each do |video| %>
-  <li class="video">
+  <li class="box">
     <a href="<%= url_for video %>">
       <%= image_tag video.thumbnail %>
       <h1><%= video.title %></h1>
@@ -13,3 +13,15 @@
   </li>
   <% end %>
 </ul>
+<% content_for :bottom do %>
+<script>
+$(function() {
+  $(".box h1").hide();
+  $(".box").hover(function() {
+    $(this).find("h1").fadeIn();
+  }).mouseout(function() {
+    $(this).find("h1").fadeOut();
+  });
+});
+</script>
+<% end %>

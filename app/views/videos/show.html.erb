@@ -12,35 +12,44 @@
 <% content_for :bottom do %>
 <%= javascript_include_tag "crossxhr", "youkuparser", "flowplayer-3.2.6.min" %>
 <script>
-  $(function() {
-    var uri = "http://v.youku.com/player/getPlayList/VideoIDS/<%= @video.video_token %>"
-    var request;
+$(function() {
+  var uri = "http://v.youku.com/player/getPlayList/VideoIDS/<%= @video.video_token %>"
+  var request;
+  var _vh1 = $('#video h1').hide();
 
-    function callback() {
-      var res = $.parseJSON(request.responseText).data[0];
-      var _seed, _key1, _key2, _fid;
-      _seed = res.seed;
-      _key1 = res.key1;
-      _key2 = res.key2;
-      _fid  = res.streamfileids.mp4;
-      $('#player').attr("href", ykmp4(_fid, _seed, _key1, _key2));
-      flowplayer("player", "<%= asset_url %>/swf/flowplayer-3.2.7.swf", {
-        clip: {
-          scaling: 'fit'
-        },
-        canvas: {
-          background: '#000000',
-          backgroundGradient: 'none'
-        }
-      });
-    }
-    function req() {
-      request = new CrossXHR();
-      request.onreadystatechange = callback;
-      request.open('GET', uri);
-      request.send();
-    }
-    req();
-  });
+  function callback() {
+    var res = $.parseJSON(request.responseText).data[0];
+    var _seed, _key1, _key2, _fid;
+    _seed = res.seed;
+    _key1 = res.key1;
+    _key2 = res.key2;
+    _fid  = res.streamfileids.mp4;
+    $('#player').attr("href", ykmp4(_fid, _seed, _key1, _key2));
+    $('#player').hover(function() {
+      _vh1.fadeIn();
+    }).mouseout(function() {
+      _vh1.fadeOut();
+    });
+    flowplayer("player", {
+        src: "<%= asset_url %>/swf/flowplayer-3.2.7.swf",
+        wmode: "transparent"
+      }, {
+      clip: {
+        scaling: 'fit'
+      },
+      canvas: {
+        background: '#000000',
+        backgroundGradient: 'none'
+      }
+    });
+  }
+  function req() {
+    request = new CrossXHR();
+    request.onreadystatechange = callback;
+    request.open('GET', uri);
+    request.send();
+  }
+  req();
+});
 </script>
 <% end %>

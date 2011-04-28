@@ -1,12 +1,12 @@
 <ul id="artists">
-  <li class="ads artist">
+  <li class="ads box">
     <a href="http://shop36674955.taobao.com">
       <span class="count">6</span>
       <%= image_tag 'maktaobao.png' %>
     </a>
   </li>
   <% @artists.each do |artist| %>
-  <li class="artist">
+  <li class="box">
     <a href="<%= url_for artist %>">
       <%= image_tag artist.thumbnail %>
       <span class="count"><%= artist.videos.count %></span>
@@ -15,3 +15,17 @@
   </li>
   <% end %>
 </ul>
+<% content_for :bottom do %>
+<script>
+$(function() {
+  var _count = $(".count").hide();
+  _count.delay(3200).fadeIn();
+  $(".box h1").hide();
+  $(".box").hover(function() {
+    $(this).find("h1").fadeIn();
+  }).mouseout(function() {
+    $(this).find("h1").fadeOut();
+  });
+});
+</script>
+<% end %>
