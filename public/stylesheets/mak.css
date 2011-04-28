@@ -29,6 +29,7 @@ body {
 #bottom {
   margin:24px auto;
   text-align:center;
+  font-family:'Arvo', helvetica, arial, serif;
 }
 
 .flash {
@@ -63,10 +64,13 @@ body {
 }
 
 #video h1 {
-  font-size:22px;
-  line-height:24px;
-  padding:3px;
+  font-size:32px;
+  line-height:36px;
+  padding:6px;
   color:#ffffff;
+  background:#000000;
+  font-family:'Arvo', helvetica, arial, serif;
+  text-shadow:0 -2px 0 #555555;
 }
 
 .artist, .video {
@@ -77,6 +81,7 @@ body {
   height:189px;
   box-shadow:0 0 6px #000000;
   -webkit-box-shadow:0 0 6px #000000;
+  font-family:'Arvo', arial, serif;
 }
 
 .artist, .video {
