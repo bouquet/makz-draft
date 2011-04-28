@@ -39,7 +39,6 @@ class VideosController < ApplicationController
   # GET /videos/1/edit
   def edit
     @video = Video.find(params[:id])
-    session[:original_artist_name] = @artist.name
   end
 
   # POST /videos
@@ -49,6 +48,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
+        @video.artists.each {|a| a.videos << @video; a.save}
         format.html { redirect_to(@video, :notice => 'Video was successfully created.') }
         format.xml  { render :xml => @video, :status => :created, :location => @video }
       else
@@ -65,7 +65,6 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
-        Video.find(session[:original_video_name]).destroy if @artist.name != session[:original_video_name]
         @video.artists.each {|a| a.videos << @video; a.save}
         format.html { redirect_to(@video, :notice => 'Video was successfully updated.') }
         format.xml  { head :ok }
