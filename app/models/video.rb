@@ -3,7 +3,7 @@ class Video
 
   property :title, String
   property :video_token, String
-  property :sub_on, Boolean
+  property :sub_on, Boolean, :default => false
   timestamps!
 
   validates_presence_of :title

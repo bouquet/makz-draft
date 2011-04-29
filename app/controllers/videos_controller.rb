@@ -49,6 +49,7 @@ class VideosController < ApplicationController
     respond_to do |format|
       if @video.save
         @video.artists.each {|a| a.videos << @video; a.save}
+        params[:video][:artists].each {|a| a.videos_added_at = Time.now; a.save}
         format.html { redirect_to(@video, :notice => 'Video was successfully created.') }
         format.xml  { render :xml => @video, :status => :created, :location => @video }
       else
@@ -66,6 +67,7 @@ class VideosController < ApplicationController
     respond_to do |format|
       if @video.update_attributes(params[:video])
         @video.artists.each {|a| a.videos << @video; a.save}
+        params[:video][:artists].each {|a| a.videos_added_at = Time.now; a.save}
         format.html { redirect_to(@video, :notice => 'Video was successfully updated.') }
         format.xml  { head :ok }
       else

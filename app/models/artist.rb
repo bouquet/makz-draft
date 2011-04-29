@@ -6,6 +6,7 @@ class Artist
   property :country, String
   property :sex, String
   property :birth, Date
+  property :videos_added_at, Time
   key_on :slug
   timestamps!
 
@@ -22,6 +23,14 @@ class Artist
 
   def thumbnail
     "portraits/#{self.slug}.jpg"
+  end
+
+  def has_new?
+    if self.videos_added_at && Time.now - self.videos_added_at < 3.days
+      true
+    else
+      false
+    end
   end
 
 private

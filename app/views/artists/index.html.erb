@@ -9,7 +9,13 @@
   <li class="box">
     <a href="<%= url_for artist %>">
       <%= image_tag artist.thumbnail %>
-      <span class="count"><%= artist.videos.count %></span>
+      <span class="count <% if artist.has_new? %>
+        has_new
+      <% else %>
+        no_new
+      <% end %>">
+        <%= artist.videos.count %>
+      </span>
       <h1><%= artist.name %></h1>
     </a>
   </li>
@@ -18,7 +24,20 @@
 <% content_for :bottom do %>
 <script>
 $(function() {
-  <%= render "shared/seqdisplay.js" %>
+  var _boxes = $(".box").hide();
+  $(".count").hide();
+  _boxes.each(function(i) {
+    $(this).delay(160*i).fadeIn(800);
+  });
+  $(".box h1").hide();
+  $(".box").hover(function() {
+    $(this).find("h1").fadeIn();
+    $(this).find(".no_new").fadeIn();
+  }).mouseout(function() {
+    $(this).find("h1").fadeOut();
+    $(this).find(".no_new").fadeOut();
+  });
+  $(".has_new").delay(_boxes.length*120).fadeIn(1600);
 });
 </script>
 <% end %>
