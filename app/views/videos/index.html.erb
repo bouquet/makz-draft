@@ -8,6 +8,9 @@
   <li class="box">
     <a href="<%= url_for video %>">
       <%= image_tag video.thumbnail %>
+      <% if video.sub_on? %>
+      <span class="count">中</span>
+      <% end %>
       <h1><%= video.title %></h1>
     </a>
   </li>

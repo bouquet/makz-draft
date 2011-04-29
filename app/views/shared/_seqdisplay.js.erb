@@ -1,7 +1,7 @@
 var _boxes = $(".box").hide();
+var _counts = $(".count").hide();
 _boxes.each(function(i) {
   $(this).delay(160*i).fadeIn(800);
-  _i = i+1;
 });
 $(".box h1").hide();
 $(".box").hover(function() {
@@ -9,3 +9,4 @@ $(".box").hover(function() {
 }).mouseout(function() {
   $(this).find("h1").fadeOut();
 });
+_counts.delay(_boxes.length*120).fadeIn(1600);

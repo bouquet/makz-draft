@@ -18,11 +18,7 @@
 <% content_for :bottom do %>
 <script>
 $(function() {
-  var _counts = $(".count").hide();
   <%= render "shared/seqdisplay.js" %>
-  if (_boxes.length == _i) {
-    _counts.delay(_i*120).fadeIn(1600);
-  };
 });
 </script>
 <% end %>
