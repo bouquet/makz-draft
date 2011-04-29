@@ -36,7 +36,11 @@ $(function() {
       clip: {
         url: ykmp4(_fid, _seed, _key1, _key2),
         scaling: 'fit',
-        captionUrl: '<%= asset_url %>/subs/<%= @video.key %>.srt'
+        captionUrl: <% if @video.sub_on? %>
+          '<%= asset_url %>/subs/<%= @video.key %>.srt'
+        <% else %>
+          '<%= asset_url %>/subs/nosubs.srt'
+        <% end %>
       },
       canvas: {
         background: '#000000',
