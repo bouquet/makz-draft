@@ -9,13 +9,7 @@
   <li class="box">
     <a href="<%= url_for artist %>">
       <%= image_tag artist.thumbnail %>
-      <span class="count <% if artist.has_new? %>
-        has_new
-      <% else %>
-        no_new
-      <% end %>">
-        <%= artist.videos.count %>
-      </span>
+      <span class="count <% if artist.has_new? %>has_new <% else %>no_new<% end %>"><%= artist.videos.count %></span>
       <h1><%= artist.name %></h1>
     </a>
   </li>

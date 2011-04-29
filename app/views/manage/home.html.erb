@@ -4,6 +4,7 @@
 <tr>
   <th>Title</th>
   <th>Video</th>
+  <th>Key</th>
   <th>Edit</th>
   <th>Delete</th>
 </tr>
@@ -11,6 +12,7 @@
 <tr>
   <td><%= video.title %></td>
   <td><%= video.video_token %></td>
+  <td><%= video.key %></td>
   <td><%= link_to 'Edit', edit_video_path(video) %></td>
   <td><%= check_box_tag "video_keys[]", video.key %></td>
 </tr>
