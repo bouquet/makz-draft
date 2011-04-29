@@ -24,7 +24,6 @@ $(function() {
     _key1 = res.key1;
     _key2 = res.key2;
     _fid  = res.streamfileids.mp4;
-    $('#player').attr("href", ykmp4(_fid, _seed, _key1, _key2));
     $('#player').hover(function() {
       _vh1.fadeIn();
     }).mouseout(function() {
@@ -35,11 +34,36 @@ $(function() {
         wmode: "transparent"
       }, {
       clip: {
-        scaling: 'fit'
+        url: ykmp4(_fid, _seed, _key1, _key2),
+        scaling: 'fit',
+        captionUrl: '<%= asset_url %>/subs/<%= @video.key %>.srt'
       },
       canvas: {
         background: '#000000',
         backgroundGradient: 'none'
+      },
+      plugins: {
+        captions: {
+          url: "<%= asset_url %>/swf/flowplayer.captions-3.2.3.swf",
+          captionTarget: "content"
+        },
+        content: {
+          url: "<%= asset_url %>/swf/flowplayer.content-3.2.0.swf",
+          bottom: 64,
+          height: 96,
+          backgroundColor: 'transparent',
+          backgroundGradient: 'none',
+          border: 0,
+          textDecoration: 'outline',
+          style: {
+            body: {
+              fontSize: 20,
+              fontFamily: 'Arial',
+              textAlign: 'center',
+              color: '#ffffff'
+            }
+          }
+        }
       }
     });
   }
