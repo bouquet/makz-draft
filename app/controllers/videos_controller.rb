@@ -6,7 +6,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.xml
   def index
-    @videos = Video.all
+    @videos = Video.all.sort {|a, b| a.created_at <=> b.created_at}
 
     respond_to do |format|
       format.html # index.html.erb

@@ -2,7 +2,7 @@
   <li class="box">
     <%= image_tag @artist.thumbnail %>
   </li>
-  <% @artist.videos.each do |video| %>
+  <% @artist.videos.sort {|a, b| a.created_at <=> b.created_at}.each do |video| %>
   <li class="box">
     <a href="<%= url_for video %>">
       <%= image_tag video.thumbnail %>
