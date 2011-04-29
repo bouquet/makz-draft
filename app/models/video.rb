@@ -3,6 +3,7 @@ class Video
 
   property :title, String
   property :video_token, String
+  timestamps!
 
   validates_presence_of :title
   validates_presence_of :video_token

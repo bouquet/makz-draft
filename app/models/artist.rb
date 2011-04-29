@@ -7,6 +7,7 @@ class Artist
   property :sex, String
   property :birth, Date
   key_on :slug
+  timestamps!
 
   many :videos
 
