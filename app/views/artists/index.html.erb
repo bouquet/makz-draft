@@ -25,10 +25,10 @@ $(function() {
   });
   $(".box h1").hide();
   $(".box").hover(function() {
-    $(this).find("h1").fadeIn();
+    $(this).find("h1").fadeIn("fast");
     $(this).find(".no_new").fadeIn();
-  }).mouseout(function() {
-    $(this).find("h1").fadeOut();
+  }, function() {
+    $(this).find("h1").fadeOut("fast");
     $(this).find(".no_new").fadeOut();
   });
   $(".has_new").delay(_boxes.length*120).fadeIn(1600);

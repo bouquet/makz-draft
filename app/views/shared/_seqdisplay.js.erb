@@ -5,8 +5,8 @@ _boxes.each(function(i) {
 });
 $(".box h1").hide();
 $(".box").hover(function() {
-  $(this).find("h1").fadeIn();
-}).mouseout(function() {
-  $(this).find("h1").fadeOut();
+  $(this).find("h1").fadeIn("fast");
+}, function() {
+  $(this).find("h1").fadeOut("fast");
 });
 _counts.delay(_boxes.length*120).fadeIn(1600);
