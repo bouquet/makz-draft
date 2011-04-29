@@ -39,7 +39,7 @@ $(function() {
         captionUrl: <% if @video.sub_on? %>
           '<%= asset_url %>/subs/<%= @video.key %>.srt'
         <% else %>
-          '<%= asset_url %>/subs/nosubs.srt'
+          '<%= asset_url %>/nosubs.txt'
         <% end %>
       },
       canvas: {
