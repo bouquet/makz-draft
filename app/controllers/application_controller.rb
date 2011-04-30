@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user
+  helper_method :current_user, :client_ip
 
 private
 
@@ -22,5 +22,9 @@ private
     else
       "application"
     end
+  end
+
+  def client_ip
+    request.remote_ip
   end
 end
