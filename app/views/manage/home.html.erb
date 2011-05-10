@@ -1,5 +1,7 @@
 <h1>Videos</h1>
 <% form_tag videos_path, :method => :delete do %>
+<%= submit_tag "Delete selected Videos" %>
+<%= link_to 'New Video', new_video_path %>
 <table>
 <tr>
   <th>Title</th>
@@ -18,8 +20,6 @@
 </tr>
 <% end %>
 </table>
-<%= submit_tag "Delete selected Videos" %>
-<%= link_to 'New Video', new_video_path %>
 <% end %>
 <h1>Artists</h1>
 <% form_tag artists_path, :method => :delete do %>
