@@ -4,9 +4,11 @@
 <meta charset="utf-8" />
 <title>Makz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" %>
 <%= csrf_meta_tag %>
 </head>
 <body>
 <%= yield %>
+<%= yield :bottom %>
 </body>
 </html>

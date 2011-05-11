@@ -7,7 +7,7 @@
   <% @videos.each do |video| %>
   <li class="box">
     <a href="<%= url_for video %>">
-      <%= image_tag video.thumbnail %>
+      <%= image_tag video.thumb %>
       <% if video.sub_on? %>
       <span class="count">中</span>
       <% end %>

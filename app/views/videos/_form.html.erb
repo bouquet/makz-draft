@@ -2,6 +2,42 @@
   <%= f.input :title %>
   <%= f.input :video_token %>
   <%= f.input :sub_on, :as => :radio %>
+  <%= f.input :auto_thumb, :as => :radio %>
+  <%= f.input :thumb %>
   <%= f.input :artists, :as => :check_boxes, :collection => @artist_ids %>
   <%= f.commit_button %>
+<% end %>
+
+<% content_for :bottom do %>
+<%= javascript_include_tag "crossxhr" %>
+<script>
+$(function() {
+  var request,
+      token = $('#video_video_token'),
+      thumb = $('#video_thumb');
+  function req(uri) {
+    request = new CrossXHR();
+    request.onreadystatechange = autothumb;
+    request.open('GET', uri);
+    request.send();
+  }
+  function autothumb() {
+    var res = $.parseJSON(request.responseText).data[0];
+    if ($('#video_auto_thumb_true:checked').length > 0) {
+      thumb.val(res.logo);
+    }
+    $('#video_auto_thumb_true').change(function() {
+      thumb.val(res.logo);
+    });
+    $('#video_title').val(res.title);
+  }
+  function check_token() {
+    if (token.val().length == 13) {
+      var uri = "http://v.youku.com/player/getPlayList/VideoIDS/" + token.val();
+      req(uri);
+    }
+  }
+  setInterval(check_token, 800);
+});
+</script>
 <% end %>
