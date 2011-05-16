@@ -67,7 +67,9 @@ class VideosController < ApplicationController
     respond_to do |format|
       if @video.update_attributes(params[:video])
         @video.artists.each {|a| a.videos << @video; a.save}
-        params[:video][:artists].each {|a| a.videos_added_at = Time.now; a.save}
+        if params[:video][:artists]
+          params[:video][:artists].each {|a| a.videos_added_at = Time.now; a.save}
+        end
         format.html { redirect_to(@video, :notice => 'Video was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -114,7 +116,9 @@ private
   end
 
   def sanitize
-    params[:video][:artists].delete_if {|a| a == nil || a == ""}
-    params[:video][:artists] = Artist.find(params[:video][:artists])
+    if params[:video][:artists]
+      params[:video][:artists].delete_if {|a| a == nil || a == ""}
+      params[:video][:artists] = Artist.find(params[:video][:artists])
+    end
   end
 end

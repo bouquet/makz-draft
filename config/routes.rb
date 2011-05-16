@@ -1,4 +1,7 @@
 Makz::Application.routes.draw do
+  get "manage/:video_id/subs" => "subtitles#index", :as => :subtitling
+  resources :subtitles
+
   delete "/videos" => "videos#destroy_multi"
   delete "/artists" => "artists#destroy_multi"
   get "/manage" => "manage#home"
