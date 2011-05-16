@@ -100,4 +100,9 @@ $(function() {
   });
 });
 </script>
+<script>
+$(function() {
+  mpmetrics.track_links($('#poster a'), 'taobao', { 'location': $(location).attr('href'), 'user_ip': "<%= client_ip %>" });
+});
+</script>
 <% end %>

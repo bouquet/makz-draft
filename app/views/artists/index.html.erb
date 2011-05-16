@@ -34,4 +34,9 @@ $(function() {
   $(".has_new").delay(_boxes.length*120).fadeIn(1600);
 });
 </script>
+<script>
+$(function() {
+  mpmetrics.track_links($('.ads a'), 'taobao', { 'location': $(location).attr('href'), 'user_ip': "<%= client_ip %>" });
+});
+</script>
 <% end %>
