@@ -149,6 +149,6 @@ body {
 }
 
 #poster {width:100%;}
-#poster a {background:#000000 url(/images/poster.jpg) no-repeat;height:100px;display:block;width:100%;}
+#poster a {background:#000000 url(http://markson.hk/static/images/poster.jpg) no-repeat;height:100px;display:block;width:100%;}
 #poster span {cursor:pointer;color:#ffffff;height:20px;line-height:22px;border-radius:5px;background:#000000;float:right;padding:1px 6px;position:relative;top:5px;right:5px;display:none}
 
