@@ -1,6 +1,7 @@
 <article id="video">
 
 <h1><%= @video.title %></h1>
+<div id="poster"><a href="http://shop36674955.taobao.com/"><span>关闭</span></a></div>
 
 <a
   href="#"
@@ -78,6 +79,25 @@ $(function() {
     request.send();
   }
   req();
+});
+</script>
+<script>
+$(function() {
+  $('#poster a').hover(function() {
+    $(this).animate({
+      height: 1168
+    }, 400);
+    $(this).find('span').fadeIn();
+  }, function() {
+    $(this).animate({
+      height: 100
+    }, 400);
+    $(this).find('span').fadeOut();
+  });
+  $('#poster span').click(function(e) {
+    $('#poster').hide();
+    e.preventDefault();
+  });
 });
 </script>
 <% end %>
