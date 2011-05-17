@@ -1,7 +1,7 @@
 <article id="video">
 
 <h1><%= @video.title %></h1>
-<div id="poster"><a href="http://shop36674955.taobao.com/"><span>关闭</span></a></div>
+<div id="poster"><a href="http://shop36674955.taobao.com/"><span></span></a></div>
 
 <a
   href="#"
@@ -83,16 +83,26 @@ $(function() {
 </script>
 <script>
 $(function() {
+  $('#poster span').text('鼠标移到这里看一下？');
   $('#poster a').hover(function() {
     $(this).animate({
       height: 1168
     }, 400);
-    $(this).find('span').fadeIn();
+    $(this).find('span').fadeOut(function() {
+      $(this).text('点击海报访问马克淘宝店 / 点我关闭海报').fadeIn();
+    });
   }, function() {
     $(this).animate({
       height: 100
     }, 400);
-    $(this).find('span').fadeOut();
+    $(this).find('span').fadeOut(function() {
+      $(this).text('鼠标移到这里看一下？').fadeIn();
+    });
+  });
+  $('#poster span').hover(function() {
+    $(this).fadeTo("fast", 1);
+  }, function() {
+    $(this).fadeTo("fast", 0.36);
   });
   $('#poster span').click(function(e) {
     $('#poster').hide();
