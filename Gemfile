@@ -6,6 +6,7 @@ gem 'omniauth'
 gem 'jquery-rails'
 gem 'carmen'
 gem 'formtastic'
+gem 'simple-navigation'
 
 group :production do
   gem 'rainbows'

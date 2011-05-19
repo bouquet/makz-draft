@@ -15,14 +15,15 @@
 </head>
 <body>
 
-<a href="/">
 <header id="top">
 <hgroup>
   <h1>马克功学</h1>
   <h2>Marksonz</h2>
 </hgroup>
+<nav>
+  <%= render_navigation :level => 1..2, :expand_all => true %>
+</nav>
 </header>
-</a>
 
 <% if notice %>
 <p class="flash notice"><%= notice %></p>
@@ -57,6 +58,16 @@ GoSquared.acct = "GSN-886614-Y";
     }
     w.addEventListener?w.addEventListener("load",gs,false):w.attachEvent("onload",gs);
 })(window);
+</script>
+<script>
+$(function() {
+  var sub = $(".sub ul");
+  sub.parent().hover(function() {
+    sub.slideDown('fast');
+  }, function() {
+    sub.slideUp('fast');
+  });
+});
 </script>
 </body>
 </html>
