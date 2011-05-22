@@ -1,0 +1,50 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          Yozloy
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the makz application
+# Description:       starts makz
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/home/yozloy/.rvm/gems/ruby-1.9.2-p180/bin/rainbows
+DAEMON_OPTS="-c /home/yozloy/local/makz/rainbows.conf -E production -D /home/yozloy/local/makz/config.ru"
+NAME=Makz
+DESC=Makz
+PID=/home/yozloy/tmp/pids/makz.pid
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+    echo -n "Starting $DESC: "
+      su - yozloy -c "$DAEMON $DAEMON_OPTS"
+      echo "$NAME."
+      ;;
+  stop)
+    echo -n "Stopping $DESC: "
+      kill -quit `cat $PID`
+    echo "$NAME."
+    ;;
+  restart)
+    echo -n "Restarting $DESC: "
+      kill -quit `cat $PID`
+    sleep 1
+    su - yozloy -c "$DAEMON $DAEMON_OPTS"
+    echo "$NAME."
+    ;;
+  reload)
+    echo -n "Reloading $DESC configuration: "
+    kill -HUP `cat $PID`
+    echo "$NAME."
+    ;;
+  *)
+    echo "Usage: $NAME {start|stop|restart|reload}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

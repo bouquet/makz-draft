@@ -44,17 +44,17 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.
     #
-    primary.item :home, 'Home', root_path, :id => 'home'
+    primary.item :home, 'Home', root_path, :id => 'home_nav', :class => 'nor'
 
     # Add an item which has a sub navigation (same params, but with block)
-    primary.item :artists, 'Artists', artists_path, :id => 'artists_nav', :class => 'sub'  do |artist|
+    primary.item :artists, 'Artists', artists_path, :id => 'artists_nav', :class => 'nor sub'  do |artist|
       # Add an item to the sub navigation (same params again)
       Artist.all.each do |a|
       artist.item :artist, a.name, url_for(a), :class => "sub_li", :id => "artist-#{a.key}"
       end
     end
     if @artist
-    primary.item :"#{@artist.name}", "#{@artist.name}", root_path
+    primary.item :"#{@artist.key}", "#{@artist.name}", root_path, :class => 'nor'
     end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
