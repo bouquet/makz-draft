@@ -5,6 +5,8 @@ body {
 }
 
 #content {
+  position:relative;
+  z-index:5;
   padding-top:24px;
   background:#888888;
   box-shadow:inset 0px 3px 5px -2px #555555, inset 0px -3px 5px -2px #555555;
@@ -21,6 +23,8 @@ body {
 }
 
 #top {
+  position:relative;
+  z-index:3000;
   margin:12px auto 16px;
   background:url(http://markson.hk/static/images/marksonz.png) 0 18px no-repeat;
 }
@@ -125,6 +129,7 @@ body {
   width:252px;
   height:189px;
   position:absolute;
+  z-index:1;
 }
 
 .box span {
@@ -155,16 +160,15 @@ body {
 #poster a {background:#000000 url(http://markson.hk/static/images/poster.jpg) no-repeat;height:100px;display:block;width:100%;}
 #poster span {cursor:pointer;color:#ffffff;height:20px;line-height:22px;border-radius:5px;background:#000000;float:right;padding:1px 6px;position:relative;top:5px;right:5px;opacity:0.36}
 
-#top ul {list-style:none;}
-#top nav {background:#ffffff;border:1px solid #cccccc;font-family:'Arvo';}
-#top nav a {color:#666666;text-decoration:none;}
-#top nav li {background-color:#ffffff;text-align:center;}
-.nor {background-image:url(http://markson.hk/static/images/uli.png);background-repeat:no-repeat;background-position:right center;display:inline-block;position:relative;padding:8px 16px 8px 8px;}
-.nor {*display:inline;}
-.sub {background-image:url(http://markson.hk/static/images/adx.png), url(http://markson.hk/static/images/uli.png);background-repeat:no-repeat, no-repeat;background-position:6px center, right center;padding-left:24px;}
-#home_nav {background-image:url(http://markson.hk/static/images/home.png), url(http://markson.hk/static/images/uli.png);background-repeat:no-repeat, no-repeat;background-position:13px center, right center;width:32px;}
-#home_nav a {color:transparent !important;}
-.sub ul {display:none;position:absolute;top:40px;left:-15px;border:2px solid #cccccc;z-index:9999;}
-.sub_li {padding:8px;border-top:1px solid #cccccc;width:200px;}
-.sub_li:first-child {border-top:none;}
-.sub_li:hover {background:#dddddd !important;}
+#nice {height:40px;line-height:24px;font-family:'Arvo';background:#ffffff;border:1px solid #cccccc;}
+#nice a {text-decoration:none;display:block;text-align:center;color:#666666;padding:8px 16px 8px 8px;}
+#nice ul {list-style:none;}
+#nice li {vertical-align:top;}
+#home a {text-indent:-999em;width:32px;background:url(http://markson.hk/static/images/home.png) no-repeat 14px center;}
+.def {display:inline-block;background:#ffffff url(http://markson.hk/static/images/uli.png) no-repeat right center;}
+.def {*display:inline;}
+.sub {position:relative;}
+.sub ul {z-index:999;background:#ffffff;visibility:hidden;position:absolute;top:41px;left:-16px;width:200px;border:2px solid #dddddd;border-top-width:1px;}
+.sub ul a {display:inline-block;padding:8px !important;border-top:1px solid #dddddd;}
+.sub ul a:hover {background:#eeeeee;}
+.sf-sub-indicator {display:inline-block;position:relative;left:3px;width:12px;text-indent:-999em;background:#ffffff url(http://markson.hk/static/images/adx.png) no-repeat center;}
