@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
   before_filter :video_ids, :only => [:new, :edit]
 
   def index
-    @artists = Artist.all.sort {|a, b| b.created_at <=> a.created_at}
+    @artists = Artist.all.sort {|a, b| a.name <=> b.name}
 
     respond_to do |format|
       format.html

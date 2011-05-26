@@ -138,6 +138,7 @@ body {
 }
 
 .count {
+  z-index:6;
   position:relative;
   float:right;
   top:-10px;

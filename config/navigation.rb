@@ -49,7 +49,7 @@ SimpleNavigation::Configuration.run do |navigation|
     # Add an item which has a sub navigation (same params, but with block)
     primary.item :artists, 'Artists', artists_path, :id => 'artists_nav', :class => 'def sub'  do |artist|
       # Add an item to the sub navigation (same params again)
-      Artist.all.each do |a|
+      Artist.all.sort {|a, b| a.name <=> b.name}.each do |a|
       artist.item :artist, a.name, url_for(a), :id => "artist-#{a.key}"
       end
     end
