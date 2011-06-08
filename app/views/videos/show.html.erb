@@ -31,16 +31,16 @@ $(function() {
       _vh1.fadeOut();
     });
     flowplayer("player", {
-        src: "<%= asset_url %>/swf/flowplayer-3.2.7.swf",
+        src: "/swf/flowplayer-3.2.7.swf",
         wmode: "transparent"
       }, {
       clip: {
         url: ykmp4(_fid, _seed, _key1, _key2),
         scaling: 'fit',
         captionUrl: <% if @video.sub_on? %>
-          '<%= asset_url %>/subs/<%= @video.key %>.srt'
+          '/subs/<%= @video.key %>.srt'
         <% else %>
-          '<%= asset_url %>/nosubs.txt'
+          '/nosubs.txt'
         <% end %>
       },
       canvas: {
@@ -49,11 +49,11 @@ $(function() {
       },
       plugins: {
         captions: {
-          url: "<%= asset_url %>/swf/flowplayer.captions-3.2.3.swf",
+          url: "/swf/flowplayer.captions-3.2.3.swf",
           captionTarget: "content"
         },
         content: {
-          url: "<%= asset_url %>/swf/flowplayer.content-3.2.0.swf",
+          url: "/swf/flowplayer.content-3.2.0.swf",
           bottom: 64,
           height: 96,
           backgroundColor: 'transparent',
