@@ -1,0 +1,23 @@
+<ul id="videos">
+  <li class="box">
+    <%= image_tag @cymbal.thumbnail %>
+  </li>
+  <% @cymbal.videos.sort {|a, b| b.created_at <=> a.created_at}.each do |video| %>
+  <li class="box">
+    <a href="<%= url_for video %>">
+      <%= image_tag video.thumb %>
+      <% if video.sub_on? %>
+      <span class="count">中</span>
+      <% end %>
+      <h1><%= video.title %></h1>
+    </a>
+  </li>
+  <% end %>
+</ul>
+<% content_for :bottom do %>
+<script>
+$(function() {
+  <%= render "shared/seqdisplay.js" %>
+});
+</script>
+<% end %>

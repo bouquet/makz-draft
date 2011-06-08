@@ -47,16 +47,34 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :home, 'Home', root_path, :id => 'home', :class => 'def'
 
     # Add an item which has a sub navigation (same params, but with block)
-    primary.item :artists, 'Artists', artists_path, :id => 'artists_nav', :class => 'def sub'  do |artist|
-      # Add an item to the sub navigation (same params again)
-      Artist.all.sort {|a, b| a.name <=> b.name}.each do |a|
-      artist.item :artist, a.name, url_for(a), :id => "artist-#{a.key}"
+    primary.item :types, 'Types', "#", :class => 'def sub'  do |type|
+      ["artists", "cymbals"].each do |t|
+        type.item t.to_sym, t.capitalize, "/#{t}", :id => "t-#{t}", :class => ""
+      end
+    end
+    if request.path.include? "/artists"
+      primary.item :artists, 'Artists', artists_path, :id => 'artists_nav', :class => 'def sub'  do |artist|
+        # Add an item to the sub navigation (same params again)
+        Artist.all.sort {|a, b| a.name <=> b.name}.each do |a|
+          artist.item :artist, a.name, url_for(a), :id => "artist-#{a.key}"
+        end
       end
     end
     if @artist
-    primary.item :"#{@artist.key}", "#{@artist.name}", url_for(@artist), :class => 'def'
+      primary.item :"#{@artist.key}", "#{@artist.name}", url_for(@artist), :class => 'def'
     end
 
+    if request.path.include? "/cymbals"
+      primary.item :cymbals, 'Cymbals', cymbals_path, :id => 'cymbals_nav', :class => 'def sub'  do |cymbal|
+        # Add an item to the sub navigation (same params again)
+        Cymbal.all.sort {|a, b| a.model <=> b.model}.each do |a|
+        cymbal.item :cymbal, a.model, url_for(a), :id => "cymbal-#{a.key}"
+        end
+      end
+    end
+    if @cymbal
+      primary.item :"#{@cymbal.key}", "#{@cymbal.model}", url_for(@cymbal), :class => 'def'
+    end
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

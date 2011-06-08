@@ -11,7 +11,7 @@
   <th>Subs</th>
   <th>Delete</th>
 </tr>
-<% @videos.each do |video| %>
+<% @videos.try(:each) do |video| %>
 <tr>
   <td><%= video.title %></td>
   <td><%= video.video_token %></td>
@@ -33,7 +33,7 @@
   <th>Birth</th>
   <th>Delete</th>
 </tr>
-<% @artists.each do |artist| %>
+<% @artists.try(:each) do |artist| %>
 <tr>
   <td><%= artist.name %></td>
   <td><%= artist.country %></td>
@@ -46,4 +46,30 @@
 </table>
 <%= submit_tag "Delete selected Artists" %>
 <%= link_to 'New Artist', new_artist_path %>
+<% end %>
+<h1>Cymbals</h1>
+<% form_tag cymbals_path, :method => :delete do %>
+<table>
+<tr>
+  <th>Model</th>
+  <th>Brand</th>
+  <th>Size</th>
+  <th>Color</th>
+  <th>Material</th>
+  <th>Delete</th>
+</tr>
+<% @cymbals.try(:each) do |cymbal| %>
+<tr>
+  <td><%= cymbal.model %></td>
+  <td><%= cymbal.brand %></td>
+  <td><%= cymbal.size %></td>
+  <td><%= cymbal.color %></td>
+  <td><%= cymbal.material %></td>
+  <td><%= link_to 'Edit', edit_artist_path(cymbal) %></td>
+  <td><%= check_box_tag "cymbal_keys[]", caymbal.key %></td>
+</tr>
+<% end %>
+</table>
+<%= submit_tag "Delete selected Cymbals" %>
+<%= link_to 'New Cymbal', new_cymbal_path %>
 <% end %>

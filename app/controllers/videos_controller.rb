@@ -120,5 +120,9 @@ private
       params[:video][:artists].delete_if {|a| a == nil || a == ""}
       params[:video][:artists] = Artist.find(params[:video][:artists])
     end
+    if params[:video][:cymbals]
+      params[:video][:cymbals].delete_if {|a| a == nil || a == ""}
+      params[:video][:cymbals] = Cymbal.find(params[:video][:cymbals])
+    end
   end
 end

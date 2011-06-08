@@ -1,0 +1,9 @@
+<% semantic_form_for @cymbal do |f| %>
+  <%= f.input :model %>
+  <%= f.input :brand %>
+  <%= f.input :size %>
+  <%= f.input :color %>
+  <%= f.input :material %>
+  <%= f.input :videos, :as => :check_boxes, :collection => @video_ids %>
+  <%= f.commit_button %>
+<% end %>

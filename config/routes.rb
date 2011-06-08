@@ -4,18 +4,19 @@ Makz::Application.routes.draw do
 
   delete "/videos" => "videos#destroy_multi"
   delete "/artists" => "artists#destroy_multi"
+  delete "/cymbals" => "cymbals#destroy_multi"
   get "/manage" => "manage#home"
 
-  match "/signout" => "sessions#destroy", :as => :signout
-  match "/auth/:provider/callback" => "sessions#create"
   scope "/manage" do
     resources :videos, :only => [:new, :edit]
     resources :artists, :only => [:new, :edit]
+    resources :cymbals, :only => [:new, :edit]
   end
   root :to => "artists#index"
 
   resources :artists, :except => [:new, :edit]
   resources :videos, :except => [:new, :edit]
+  resources :cymbals, :except => [:new, :edit]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
