@@ -65,8 +65,8 @@
   <td><%= cymbal.size %></td>
   <td><%= cymbal.color %></td>
   <td><%= cymbal.material %></td>
-  <td><%= link_to 'Edit', edit_artist_path(cymbal) %></td>
-  <td><%= check_box_tag "cymbal_keys[]", caymbal.key %></td>
+  <td><%= link_to 'Edit', edit_cymbal_path(cymbal) %></td>
+  <td><%= check_box_tag "cymbal_keys[]", cymbal.key %></td>
 </tr>
 <% end %>
 </table>
